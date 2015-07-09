@@ -1,10 +1,10 @@
 function getClientIp(req) {
-  
+
   var ipAddress;
   // Amazon EC2 / Heroku workaround to get real client IP
-  var forwardedIpsStr = req.header('x-forwarded-for'); 
+  var forwardedIpsStr = req.header('x-forwarded-for');
   if (forwardedIpsStr) {
-    
+
     // 'x-forwarded-for' header may return multiple IP addresses in
     // the format: "client IP, proxy 1 IP, proxy 2 IP" so take the
     // the first one
@@ -24,5 +24,6 @@ function getClientIp(req) {
  */
 
 exports.index = function(req, res) {
-  res.end('Hello World');  
+  //res.end('Hello World');
+  res.render('index', {title: "hey", message: "message"});
 };
