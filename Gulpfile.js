@@ -5,7 +5,8 @@ var gulp = require('gulp'),
     babelify = require('babelify'),
     reactify = require('reactify'),
     streamify = require('gulp-streamify'),
-    notify = require('gulp-notify');
+    notify = require('gulp-notify'),
+    uglify   = require('gulp-uglify');
 
 
 function handleErrors() {
@@ -39,8 +40,8 @@ function build(isWatching) {
         bundler
             .bundle()
             .on('error', handleErrors)
-            .pipe(streamify(uglify()))
             .pipe(source('./main.js'))
+            .pipe(streamify(uglify()))
             .pipe(gulp.dest('./public/js'))
     }
 }
