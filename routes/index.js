@@ -22,8 +22,11 @@ function getClientIp(req) {
 /*
  * GET home page.
  */
+var React = require('react');
+var ReactApp = React.createFactory(require('../react/component/app'));
 
-exports.index = function(req, res) {
-  //res.end('Hello World');
-  res.render('index', {title: "hey", message: "message"});
+exports.index = function(req, res, next) {
+  var reactHtml = React.renderToString(ReactApp({}));
+
+  res.render('index.ejs', {reactContent: reactHtml});
 };
